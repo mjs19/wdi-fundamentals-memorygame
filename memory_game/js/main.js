@@ -24,20 +24,23 @@ var cards = [
 var cardsInPlay = [];
 
 var checkForMatch = function(){
-  if (cardsInPlay[0] === cardsInPlay[1]) {
-alert("You found a match!");
+  if (cardsInPlay[0].rank === cardsInPlay[1].rank) {
+    if(cardsInPlay[0].suit != cardsInPlay[1].suit){
+      alert("You found a match!");
+    }
+    // same card was clicked twice
+    else{
+      alert("You clicked the same card twice! Try again.")
+    }
 } else {
 alert("Sorry, try again.");
 }
 }
 
+
 var flipCard = function(){
   var cardId = this.getAttribute('data-id');
-  console.log("User flipped " + cards[cardId].rank);
-  cardsInPlay.push(cards[cardId].rank);
-  console.log(cards[cardId].cardImage);
-  console.log(cards[cardId].suit);
-
+  cardsInPlay.push(cards[cardId]);
   this.setAttribute("src", cards[cardId].cardImage);
 
   if(cardsInPlay.length === 2){
