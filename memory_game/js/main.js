@@ -1,8 +1,3 @@
-// reload button
-refresh = document.getElementById('r');
-
-
-
 // game logic
 var cards = [
   {
