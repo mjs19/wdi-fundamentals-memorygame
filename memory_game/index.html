@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- This is a comment in HTML -->
-
-    <!-- Double line comments
-          are written
-            the same way
-                              -->
     <link href="https://fonts.googleapis.com/css?family=Droid+Serif|Raleway:400,500,600,700" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
 
@@ -20,8 +14,7 @@
 
   <nav>
     <a href="#Instructions"> Instructions </a>
-    <a href="#Game"> Game </a>
-    <!-- bookmark for Game not specified yet -->
+    <a href="#" onClick="window.location.reload()">New Game</a>
 
   </nav>
 
@@ -34,13 +27,7 @@
         pairs of matching cards. </p>
 
 
-<div>
-  <img src="images/back_360.png" alt="Queen of Diamonds">
-  <img src="images/back_360.png" alt="Queen of Diamonds">
-  <img src="images/back_360.png" alt="Queen of Diamonds">
-  <img src="images/back_360.png" alt="Queen of Diamonds">
-
-</div>
+<div id="game-board" class="clearfix"></div>
 
 </main>
 
