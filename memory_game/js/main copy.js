@@ -1,4 +1,4 @@
-// game logic
+// backup copy
 var cards = [
   {
     rank: "queen",
@@ -24,24 +24,16 @@ var cards = [
 var cardsInPlay = [];
 
 var checkForMatch = function(){
-  if (cardsInPlay[0].rank === cardsInPlay[1].rank) {
-    if(cardsInPlay[0].suit != cardsInPlay[1].suit){
-      alert("You found a match!");
-    }
-    // same card was clicked twice. does not count as a match.
-    else{
-      alert("You clicked the same card twice! Try again.")
-    }
-// no match found
+  if (cardsInPlay[0] === cardsInPlay[1]) {
+alert("You found a match!");
 } else {
 alert("Sorry, try again.");
 }
 }
 
-
 var flipCard = function(){
   var cardId = this.getAttribute('data-id');
-  cardsInPlay.push(cards[cardId]);
+  cardsInPlay.push(cards[cardId].rank);
   this.setAttribute("src", cards[cardId].cardImage);
 
   if(cardsInPlay.length === 2){
