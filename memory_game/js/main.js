@@ -22,15 +22,21 @@ var cards = [
   }
 ];
 var cardsInPlay = [];
-
+var clickAgain = false;
 var checkForMatch = function(){
+
   if (cardsInPlay[0].rank === cardsInPlay[1].rank) {
-    if(cardsInPlay[0].suit != cardsInPlay[1].suit){
-      alert("You found a match!");
+    if(cardsInPlay[0].suit === cardsInPlay[1].suit){
+      // if same card was clicked twice it does NOT count as a match.
+      // after user gets alerted, I want them to be able to click another
+      // card and get the correct notification.
+      clickAgain = true;
+      cardsInPlay.pop(); // remove the duplicate
+      alert("Oops, you clicked the same card twice.");
+
     }
-    // same card was clicked twice. does not count as a match.
     else{
-      alert("You clicked the same card twice! Try again.")
+      alert("You found a match!")
     }
 // no match found
 } else {
@@ -44,7 +50,10 @@ var flipCard = function(){
   cardsInPlay.push(cards[cardId]);
   this.setAttribute("src", cards[cardId].cardImage);
 
-  if(cardsInPlay.length === 2){
+  if(cardsInPlay.length === 2 && !clickAgain){
+    return setTimeout(checkForMatch, 200);
+  } else{
+    clickAgain = false;
     return setTimeout(checkForMatch, 200);
   }
 }
