@@ -26,27 +26,17 @@ var checkForMatch = function(){
 
 if(cardsInPlay.length === 2){
   if (cardsInPlay[0].rank === cardsInPlay[1].rank) {
-    alert("You found a match! Click New Game to reset.");
+    alert("You found a match!");
     // remove event listener from other cards
-    var dom = document.getElementsByTagName('img');
-    console.log(dom);
-    for(i = 0; i < dom.length; i++){
-      var cardRank = cards[i].rank;
-      var cardSuit = cards[i].suit;
-      console.log("card rank: " + cardRank + " suit: " + cardSuit);
-      for(i = 0; i < cardsInPlay.length; i++){ // card is not in play
-        var cardRank2 = cardsInPlay[i].rank;
-        var cardSuit2 = cardsInPlay[i].rank;
-        if(cardRank !== cardRank2 && cardSuit !== cardSuit2){
-          console.log("card not in play (rank): " + cardRank2.rank) +
-          "card not in play (suit): " + cardRank2.suit;
-          var rm = cards[i];
-          // remove event listener if card is not in play
-          rm.removeEventListener('click', flipCard);
-          console.log(rm);
-        }
+    var dom = document.getElementsByTagName('img')
+    for(i=0; i<dom.length; i++){
+      var index = document.getElementsByTagName('data-id');
+      if (cardsInPlay.indexOf(index) === -1){
+        dom[i].removeEventListener('click', flipCard);
       }
     }
+    //location.reload();
+
 } else { //no match found
   alert("Sorry, try again.");
   location.reload();
@@ -81,8 +71,8 @@ var createBoard = function(){
   }
 }
 
-var reload = function(){
 
-}
+
+
 
 createBoard();
